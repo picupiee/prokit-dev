@@ -5,13 +5,20 @@ table {
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: 1px solid #c40000;
   padding: 8px;
   text-align: left;
+  border-radius: 8px;
 }
 
 .no-projects {
-  border: 1px solid #ddd;
-  padding: 16px;
-  text-align: center;
+  border: 5px solid #ffffff;
+  height: 200px;
+  /* padding: 16px; */
+  /* text-align: center; */
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+  border-radius: 8px;
+  border-style: dashed;
 }

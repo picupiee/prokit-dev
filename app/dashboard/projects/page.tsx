@@ -4,6 +4,7 @@ import ButtonNav from "@/app/ui/reuse-comp/button-nav";
 import { ProjectLayout } from "./ProjectLayout";
 import { useState } from "react";
 import ProjectForm from "./components/ProjectForm";
+import Link from "next/link";
 
 export default function ProjectHeader() {
   const [isAddingProject, setIsAddingProject] = useState(false);
@@ -18,13 +19,16 @@ export default function ProjectHeader() {
         <ProjectForm />
       ) : (
         <>
-          <h1 className="text-[50px] font-semibold text-white stroke-black underline decoration-white decoration-dashed">
-            Project List
-          </h1>
-          {/* <ButtonNav onClick={handleAddProjectClick}>Add Project</ButtonNav> */}
-          <button onClick={handleAddProjectClick}>Add Project</button>
-          <div className="w-full mt-3">
-            <ProjectLayout />
+          <div className="flex flex-col items-start justify-end">
+            <h1 className="text-[50px] font-semibold text-white stroke-black underline decoration-white decoration-dashed">
+              Project List
+            </h1>
+            <Link onClick={handleAddProjectClick} href="/dashboard/projects/">
+              <ButtonNav>Add Project</ButtonNav>
+            </Link>
+            <div className="w-full mt-10">
+              <ProjectLayout />
+            </div>
           </div>
         </>
       )}
