@@ -10,9 +10,7 @@ const ProjectPageLayout: React.FC<{ children: React.ReactNode }> = ({
       <div className="mb-3">
         <ProjectHeader />
       </div>
-      <div>
-        <ProjectLayout />
-      </div>
+      <div>{/* <ProjectLayout /> */}</div>
     </div>
   );
 };

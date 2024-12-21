@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import ProjectTable from "@/app/dashboard/projects/components/ProjectTable";
@@ -30,12 +31,7 @@ const ProjectContent = () => {
 
   return (
     <div>
-      <Link href="/dashboard/projects/create">
-        <ButtonNav className="">Add Project</ButtonNav>
-      </Link>
-      <div>
-        <ProjectTable projects={projects} />
-      </div>
+      <ProjectTable projects={projects} />
     </div>
   );
 };

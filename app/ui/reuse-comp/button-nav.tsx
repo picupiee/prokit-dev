@@ -3,6 +3,7 @@ import React from "react";
 interface ButtonNavProps {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 const ButtonNav: React.FC<ButtonNavProps> = ({ children, className }) => {
