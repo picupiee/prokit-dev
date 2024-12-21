@@ -1,8 +1,10 @@
 "use client";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import ProjectTable from "@/app/dashboard/projects/components/ProjectTable";
 import { db } from "@/firebase";
 import { QueryDocumentSnapshot, collection, getDocs } from "firebase/firestore";
+import ButtonNav from "@/app/ui/reuse-comp/button-nav";
 
 interface Project {
   id: string;
@@ -28,7 +30,12 @@ const ProjectContent = () => {
 
   return (
     <div>
-      <ProjectTable projects={projects} />
+      <Link href="/dashboard/projects/create">
+        <ButtonNav className="">Add Project</ButtonNav>
+      </Link>
+      <div>
+        <ProjectTable projects={projects} />
+      </div>
     </div>
   );
 };
