@@ -52,3 +52,5 @@ We welcome contributions to ProKit! If you have suggestions or find issues, plea
 ## License
 
 ProKit is licensed under the MIT License. See the [LICENSE](https://github.com/yourusername/prokit/blob/main/LICENSE) file for more information.
+
+This web app is being developed by a beginner. All the readme.md file is create by AI, so does the dang app ! Feel free to give me some feedback as i try to learn making web app while being guided by AI to understand how things work and where things should be place, add, edited or remove from the web app codebase. 
