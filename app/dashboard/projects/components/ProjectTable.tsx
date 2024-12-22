@@ -1,7 +1,7 @@
 import React from "react";
 import ProjectTableRow from "./ProjectTableRow";
 import NoProjects from "./NoProjects";
-// import "../styles/project-table.css";
+import "../styles/project-table.css";
 import { FieldValue, Timestamp } from "firebase/firestore";
 
 interface Project {
@@ -39,14 +39,14 @@ const ProjectTable = ({ projects }: Props) => {
       </div>
     </div> */}
     
-    <table className="table-auto">
+    <table className="table-auto border-none bg-green-500 rounded-lg w-full">
       <thead>
-        <tr>
-          <th className="bg-blue-400 rounded-lg">ID</th>
-          <th className="bg-blue-400 rounded-lg">Name</th>
-          <th className="bg-blue-400 rounded-lg">Description</th>
-          <th className="bg-blue-400 rounded-lg">Created At</th>
-          <th id="action" className="bg-blue-400 rounded-lg">Action</th>
+        <tr className="text-left">
+          <th className="">ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Created At</th>
+          <th id="action" className="text-center">Action</th>
         </tr>
       </thead>
       <tbody>

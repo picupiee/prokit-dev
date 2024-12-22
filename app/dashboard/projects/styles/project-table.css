@@ -1,4 +1,8 @@
-table {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* table {
   border-collapse: collapse;
   width: auto;
   border-radius: 8px;
@@ -6,7 +10,7 @@ table {
 
 th,
 td {
-  /* border: 4px solid #ffffff; */
+  border: 2px solid #ffffff;
   border-radius: 4px;
   padding: 8px;
   text-align: left;
@@ -29,7 +33,7 @@ overflow: hidden;
   font-weight: bold;
   width: 200px;
   
-}
+} */
 
 
 .no-projects {
