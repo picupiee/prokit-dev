@@ -5,7 +5,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   return (
-    <div className="bg-gradient-to-br from-gray-400 to-slate-800 antialiased flex flex-col min-h-screen md:flex-row md:overflow-hidden">
+    <div className="w-full bg-gradient-to-br from-gray-400 to-slate-800 antialiased flex flex-col min-h-screen md:flex-row md:overflow-hidden">
       <div className="w-full md:w-64 drop-shadow-lg fixed sm:fixed sm:top-0 sm:left-0">
         <SideNav />
       </div>

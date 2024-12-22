@@ -7,32 +7,56 @@ import ProjectForm from "./components/ProjectForm";
 import Link from "next/link";
 
 export default function ProjectHeader() {
-  const [isAddingProject, setIsAddingProject] = useState(false);
+  const [showProjectForm, setShowProjectForm] = useState(false);
 
-  const handleAddProjectClick = () => {
-    setIsAddingProject(true);
+  const handleToggleView = () => {
+    setShowProjectForm(!showProjectForm);
   };
 
   return (
     <>
-      {isAddingProject ? (
-        <ProjectForm />
+      <div className="flex flex-col items-start justify-end">
+        {!showProjectForm && (<h1 className="text-[50px] font-semibold text-white underline decoration-white decoration-dashed">
+          Project List
+        </h1>)}
+        {showProjectForm && (<h1 className="text-[50px] font-semibold text-white">
+          Creating New Project
+        </h1>)}
+        <div className="flex">
+        <Link onClick={handleToggleView} href="/dashboard/projects/">
+          <ButtonNav>
+            {showProjectForm ? "Back To Project List" : "Add Project"}
+          </ButtonNav>
+        </Link>
+        </div>
+      </div>
+      {showProjectForm ? (
+        <ProjectForm onBackToProjects={handleToggleView} />
       ) : (
-        <>
-          <div className="flex flex-col items-start justify-end">
-            <h1 className="text-[50px] font-semibold text-white stroke-black underline decoration-white decoration-dashed">
-              Project List
-            </h1>
-            <Link onClick={handleAddProjectClick} href="/dashboard/projects/">
-              <ButtonNav>Add Project</ButtonNav>
-            </Link>
-            <div className="w-full mt-10">
-              <ProjectLayout />
-            </div>
-          </div>
-        </>
+        <div className="w-full mt-10">
+          <ProjectLayout />
+        </div>
       )}
     </>
+    // <>
+    //   {isAddingProject ? (
+    //     <ProjectForm onBackToProjects={handleBackToProjects} />
+    //   ) : (
+    //     <>
+    //       <div className="flex flex-col items-start justify-end">
+    //         <h1 className="text-[50px] font-semibold text-white stroke-black underline decoration-white decoration-dashed">
+    //           Project List
+    //         </h1>
+    //         <Link onClick={handleAddProjectClick} href="/dashboard/projects/">
+    //           <ButtonNav>Add Project</ButtonNav>
+    //         </Link>
+    //         <div className="w-full mt-10">
+    //           <ProjectLayout />
+    //         </div>
+    //       </div>
+    //     </>
+    //   )}
+    // </>
   );
   // return (
   //   <div className="flex flex-col items-start justify-end gap-3">

@@ -40,4 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# do not commit this file due to security reason,
+# and also because this file can only be use locally !
+
 firebase.js
+
+# Project IDX Environment setup and Gemini completion ext.
+/.idx/
+/.idx/*
+/.vscode

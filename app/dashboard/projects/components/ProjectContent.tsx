@@ -4,13 +4,21 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import ProjectTable from "@/app/dashboard/projects/components/ProjectTable";
 import { db } from "@/firebase";
-import { QueryDocumentSnapshot, collection, getDocs } from "firebase/firestore";
+import {
+  FieldValue,
+  QueryDocumentSnapshot,
+  Timestamp,
+  collection,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
 import ButtonNav from "@/app/ui/reuse-comp/button-nav";
 
 interface Project {
   id: string;
   name: string;
   description: string;
+  createdAt: FieldValue | Timestamp;
 }
 
 const ProjectContent = () => {
@@ -27,6 +35,15 @@ const ProjectContent = () => {
       setProjects(projectsData);
     };
     fetchProjects();
+
+    const unsubscribe = onSnapshot(collection(db, "projects"), (snapshot) => {
+      const projectsData: Project[] = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Project[];
+      setProjects(projectsData);
+    });
+    return () => unsubscribe();
   }, []);
 
   return (
