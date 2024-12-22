@@ -1,3 +1,5 @@
+import ButtonNav from "@/app/ui/reuse-comp/button-nav";
+import Link from "next/link";
 import React from "react";
 
 interface Project {
@@ -17,10 +19,14 @@ const ProjectForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-start justify-end mt-2 gap-3"
+    >
+      <label className="flex flex-col mb-2">
         Project Name:
         <input
+          className="rounded-sm"
           type="text"
           value={project.name}
           onChange={(event) =>
@@ -28,9 +34,10 @@ const ProjectForm = () => {
           }
         />
       </label>
-      <label>
+      <label className="flex flex-col mb-2">
         Project's Description:
         <input
+          className="rounded-sm"
           type="text"
           value={project.description}
           onChange={(event) =>
@@ -38,8 +45,10 @@ const ProjectForm = () => {
           }
         />
       </label>
-
-      <button type="submit">Create Project</button>
+      <ButtonNav buttonType="submit">Create Project</ButtonNav>
+      <Link href={`/dashboard/`}>
+        <ButtonNav>Back to Projects</ButtonNav>
+      </Link>
     </form>
   );
 };

@@ -4,6 +4,7 @@ interface ButtonNavProps {
   children: React.ReactNode;
   className?: string;
   // onClick: () => void;
+  buttonType?: "button" | "submit" | "reset";
 }
 
 const ButtonNav: React.FC<ButtonNavProps> = ({ children, className }) => {
