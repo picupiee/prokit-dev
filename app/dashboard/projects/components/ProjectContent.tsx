@@ -12,6 +12,7 @@ import {
   getDocs,
   onSnapshot,
 } from "firebase/firestore";
+import ProjectAPI from "@/app/api/projects.api";
 import ButtonNav from "@/app/ui/reuse-comp/button-nav";
 
 interface Project {
@@ -22,18 +23,23 @@ interface Project {
 }
 
 const ProjectContent = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     // fetching project from Firebase's Firestore
     const fetchProjects = async () => {
-      const projectsRef = collection(db, "projects");
-      const projectsSnapshot = await getDocs(projectsRef);
-      const projectsData: Project[] = projectsSnapshot.docs.map(
-        (doc: QueryDocumentSnapshot) => doc.data() as Project
-      );
-      setProjects(projectsData);
+      setIsLoading(true);
+      try {
+        const projectsData = await ProjectAPI.getProjects();
+        setProjects(projectsData as Project[]);
+      } catch (error) {
+        console.error("Error fetching projects: ", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
+
     fetchProjects();
 
     const unsubscribe = onSnapshot(collection(db, "projects"), (snapshot) => {
@@ -48,7 +54,7 @@ const ProjectContent = () => {
 
   return (
     <div>
-      <ProjectTable projects={projects} />
+      <ProjectTable projects={projects} isLoading={isLoading} />
     </div>
   );
 };

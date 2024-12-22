@@ -2,11 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@media only screen and (max-width: 600px) {
+  table {
+    display: none;
+  }
+  #mobile-project-list {
+    display: block;
+  }
+}
+
+@media (min-width: 640px) {
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  #mobile-project-list {
+    display: none;
+  }
+}
+
 /* table {
   border-collapse: collapse;
-  width: auto;
+  border-spacing: 0;
+  width: 100%;
   border-radius: 8px;
-}
+  overflow-x: auto;
+} */
 
 th,
 td {
@@ -25,16 +49,14 @@ td {
 }
 
 #id {
-padding: 4px;
-overflow: hidden;
+  padding: 4px;
+  overflow: hidden;
 }
 
 #name {
   font-weight: bold;
   width: 200px;
-  
-} */
-
+}
 
 .no-projects {
   border: 5px solid #ffffff;
@@ -45,5 +67,5 @@ overflow: hidden;
   /* justify-content: center;
   align-items: center; */
   border-radius: 8px;
-  border-style: dashed;
+  border-style: dotted;
 }

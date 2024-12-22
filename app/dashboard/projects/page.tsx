@@ -16,18 +16,22 @@ export default function ProjectHeader() {
   return (
     <>
       <div className="flex flex-col items-start justify-end">
-        {!showProjectForm && (<h1 className="text-[50px] font-semibold text-white underline decoration-white decoration-dashed">
-          Project List
-        </h1>)}
-        {showProjectForm && (<h1 className="text-[50px] font-semibold text-white">
-          Creating New Project
-        </h1>)}
+        {!showProjectForm && (
+          <h1 className="text-[40px] font-semibold text-white underline decoration-white mb-2">
+            Project List
+          </h1>
+        )}
+        {showProjectForm && (
+          <h1 className="text-[30px] font-semibold text-white">
+            Creating New Project
+          </h1>
+        )}
         <div className="flex">
-        <Link onClick={handleToggleView} href="/dashboard/projects/">
-          <ButtonNav>
-            {showProjectForm ? "Back To Project List" : "Add Project"}
-          </ButtonNav>
-        </Link>
+          <Link onClick={handleToggleView} href="/dashboard/projects/">
+            <ButtonNav>
+              {showProjectForm ? "Back To Project List" : "Add Project"}
+            </ButtonNav>
+          </Link>
         </div>
       </div>
       {showProjectForm ? (
