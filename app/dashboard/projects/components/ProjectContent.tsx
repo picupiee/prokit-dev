@@ -20,6 +20,7 @@ interface Project {
   name: string;
   description: string;
   createdAt: FieldValue | Timestamp;
+  shortDescription: string;
 }
 
 const ProjectContent = () => {

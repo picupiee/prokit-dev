@@ -5,6 +5,7 @@ import "../styles/project-table.css";
 import { FieldValue, Timestamp } from "firebase/firestore";
 import ButtonNav from "@/app/ui/reuse-comp/button-nav";
 import ProjectAPI from "@/app/api/projects.api";
+import Link from "next/link";
 
 interface Project {
   id: string;
@@ -78,26 +79,36 @@ const ProjectTable = ({ projects, isLoading }: Props) => {
       <div>
         <div id="mobile-project-list">
           {projects.map((project) => (
-            <div
-              className="mb-4 bg-blue-400 rounded-lg max-h-64 overflow-hidden p-2"
-              key={project.id}
-            >
-              <div className="flex flex-col">
-                <div className="text-2xl mb-5 pt-2 text-center">
+            <Link href={`/project-page/${project.id}`} key={project.id}>
+              <div
+                className="bg-gradient-to-tl from-slate-700 to-gray-500 rounded-lg shadow-lg mb-3"
+                key={project.id}
+              >
+                <div className="flex flex-row items-start justify-between ">
+                  <div className="text-2xl mb-6 pt-2 pb-2 pr-1 pl-1 rounded-md  font-bold underline underline-offset-8 decoration-dashed bg-gradient-to-r from-gray-900 to-transparent to-70%">
+                    {project.name}
+                  </div>
+                  <ButtonNav onClick={() => handleDeleteProject(project.id)}>
+                    Delete
+                  </ButtonNav>
+                </div>
+                <div className="flex flex-col">
+                  {/* <div className="text-2xl mb-6 pt-2 text-center font-bold">
                   {project.name}
-                </div>
-                <div className="mb-2">
-                  <p className="text-lg font-bold">Short Description</p>
-                  <div className="text-md">{project.shortDescription}</div>
-                </div>
-                <div className="flex items-end justify-end pr-2 pb-1 underline underline-offset-8 decoration-dotted">
-                  Date Created :{" "}
-                  {project?.createdAt instanceof Timestamp
-                    ? project.createdAt.toDate().toLocaleString()
-                    : "Invalid date"}
+                </div> */}
+                  <div className="mb-4 pl-2">
+                    <p className="text-lg font-bold">Project's Description</p>
+                    <div className="text-md">{project.description}</div>
+                  </div>
+                  <div className="flex items-end justify-end pr-2 mt-4 rounded-md bg-gradient-to-l from-gray-900 to-transparent to-70%">
+                    Data Created :{" "}
+                    {project?.createdAt instanceof Timestamp
+                      ? project.createdAt.toDate().toLocaleString()
+                      : "Invalid date"}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
