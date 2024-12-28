@@ -79,7 +79,7 @@ const ProjectTable = ({ projects, isLoading }: Props) => {
       <div>
         <div id="mobile-project-list">
           {projects.map((project) => (
-            <Link href={`/project-page/${project.id}`} key={project.id}>
+            <Link href={`/dashboard/projects/${project.id}`} key={project.id}>
               <div
                 className="bg-gradient-to-tl from-slate-700 to-gray-500 rounded-lg shadow-lg mb-3"
                 key={project.id}

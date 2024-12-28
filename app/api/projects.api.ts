@@ -23,7 +23,9 @@ interface Project {
 const projectsCollection = collection(db, "projects");
 
 const ProjectAPI = {
-  async getProjects(): Promise<Project[]> {
+  async getProjects(
+    projectId: string | string[] | undefined
+  ): Promise<Project[]> {
     try {
       const querySnapshot = await getDocs(projectsCollection);
       return querySnapshot.docs.map((doc) => {
@@ -38,6 +40,23 @@ const ProjectAPI = {
     } catch (error) {
       console.error("Error fetching projects: ", error);
       throw error;
+    }
+  },
+
+  async getProject(projectId: string): Promise<Project | null> {
+    const docRef = doc(db, "projects", projectId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      return {
+        id: data.id,
+        name: data.name,
+        description: data.description,
+        shortDescription: data.shortDescription,
+        createdAt: data.createdAt,
+      } as Project;
+    } else {
+      return null;
     }
   },
 

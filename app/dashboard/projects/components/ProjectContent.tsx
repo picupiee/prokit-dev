@@ -32,7 +32,7 @@ const ProjectContent = () => {
     const fetchProjects = async () => {
       setIsLoading(true);
       try {
-        const projectsData = await ProjectAPI.getProjects();
+        const projectsData = await ProjectAPI.getProjects(undefined);
         setProjects(projectsData as Project[]);
       } catch (error) {
         console.error("Error fetching projects: ", error);
