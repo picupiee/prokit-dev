@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 import ProjectAPI from "@/app/api/projects.api";
 import { useState, useEffect } from "react";
 
@@ -13,9 +13,7 @@ interface Project {
 }
 
 const ProjectPage = () => {
-  const router = useRouter();
-  const projectId = router.query.projectId as string;
-
+  const { id: projectId } = useParams(); // Get project ID from URL params
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,8 +22,12 @@ const ProjectPage = () => {
     const fetchProject = async () => {
       setLoading(true);
       try {
-        const projectData = await ProjectAPI.getProject(projectId);
-        setProject(projectData as Project);
+        if (typeof projectId === "string") {
+          const projectData = await ProjectAPI.getProject(projectId);
+          setProject(projectData as Project);
+        } else {
+          setError("Invalid project ID");
+        }
       } catch (error) {
         setError("Failed to retrieve project");
         console.error(error);
@@ -53,11 +55,10 @@ const ProjectPage = () => {
 
   return (
     <div>
-      <h1>This is a project page</h1>
-      {/* <h1>{project.name}</h1>
+      <h1>{project.name}</h1>
       <h1>{project.description}</h1>
       <h1>{project.shortDescription}</h1>
-      <h1>{project.createdAt.toDate().toLocaleString()}</h1> */}
+      <h1>{project.createdAt.toDate().toLocaleString()}</h1>
     </div>
   );
 };
